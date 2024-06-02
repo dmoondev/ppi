@@ -1,5 +1,8 @@
 package com.pespasioninterior.demo_ppi.Security.Controller;
 
+import com.pespasioninterior.demo_ppi.Security.Entity.AuthResponse;
+import com.pespasioninterior.demo_ppi.Security.Request.RegisterRequest;
+import com.pespasioninterior.demo_ppi.Security.Request.LoginRequest;
 import com.pespasioninterior.demo_ppi.Security.Service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

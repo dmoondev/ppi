@@ -1,8 +1,8 @@
 package com.pespasioninterior.demo_ppi.Security.Service;
 
-import com.pespasioninterior.demo_ppi.Security.Controller.AuthResponse;
-import com.pespasioninterior.demo_ppi.Security.Controller.LoginRequest;
-import com.pespasioninterior.demo_ppi.Security.Controller.RegisterRequest;
+import com.pespasioninterior.demo_ppi.Security.Entity.AuthResponse;
+import com.pespasioninterior.demo_ppi.Security.Request.LoginRequest;
+import com.pespasioninterior.demo_ppi.Security.Request.RegisterRequest;
 import com.pespasioninterior.demo_ppi.Security.Entity.User;
 import com.pespasioninterior.demo_ppi.Security.Enum.Role;
 import com.pespasioninterior.demo_ppi.Security.Repository.UserRepository;

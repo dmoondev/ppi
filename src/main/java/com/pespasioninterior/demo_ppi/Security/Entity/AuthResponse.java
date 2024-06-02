@@ -1,4 +1,4 @@
-package com.pespasioninterior.demo_ppi.Security.Controller;
+package com.pespasioninterior.demo_ppi.Security.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
