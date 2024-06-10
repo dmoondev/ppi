@@ -1,7 +1,6 @@
 package com.pespasioninterior.demo_ppi.Config;
 
 import com.pespasioninterior.demo_ppi.Security.Repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,12 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-
 public class ApplicationConfig {
     
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     
-    //Requerido el contructor Manualmente para no generar problemas con la autenticación
+    // Constructor manual
     public ApplicationConfig(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -31,24 +29,20 @@ public class ApplicationConfig {
     
     @Bean
     public AuthenticationProvider authenticationProvider(){
-        
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
-        
         return authenticationProvider;
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> userRepository.findByUsername(username)
-                .orElseThrow(()-> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
     
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
-    
 }
