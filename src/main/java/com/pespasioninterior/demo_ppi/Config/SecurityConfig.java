@@ -29,6 +29,10 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authRequest -> authRequest
                         .requestMatchers("/auth/**").permitAll()
+                        
+                        .requestMatchers("/novedades/list", "/novedades/detail/**").permitAll()
+                        .requestMatchers("/novedades/create", "/novedades/update/**", "/novedades/delete/**").hasRole("ADMIN")
+                        
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManager -> sessionManager
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -38,6 +38,6 @@ public class NovedadesService {
 	}
 	
 	public boolean existsByTitulo(String titulo) {
-		return rNovedades.existsByTitulo(titulo);
+		return rNovedades.existsByTitle(titulo);
 	}
 }

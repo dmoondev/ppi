@@ -7,6 +7,6 @@ import com.pespasioninterior.demo_ppi.Entity.Novedades;
 
 @Repository
 public interface iNovedadesRepository extends JpaRepository<Novedades, Integer>{
-	public Optional<Novedades> findByTitulo(String titulo);
-	public boolean existsByTitulo(String titulo);
+	public Optional<Novedades> findByTitle(String title);
+	public boolean existsByTitle(String title);
 }

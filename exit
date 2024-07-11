@@ -1,0 +1,23 @@
+[33mcommit 8c61bf76758075022751386364438f7ef82acc9d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Diego_Luna <dmoondev.17@gmail.com>
+Date:   Mon Jun 10 02:55:53 2024 -0300
+
+    Spring Security implement, but outwith dependencie Lombok
+
+[33mcommit 5142239c0c628e8f76b852140ad54cb8a548a452[m
+Author: Diego_Luna <dmoondev.17@gmail.com>
+Date:   Sun Jun 2 16:41:53 2024 -0300
+
+    Manipulación del token para accesos a endpoints
+
+[33mcommit 399049b483e9383cba1a1dfb4ce19c9de00ab85c[m
+Author: Diego_Luna <dmoondev.17@gmail.com>
+Date:   Sat Jun 1 21:34:24 2024 -0300
+
+    Spring Security implements
+
+[33mcommit b1665596aee17fe0635d18214f0386c8e3252e8b[m
+Author: Diego_Luna <dmoondev.17@gmail.com>
+Date:   Mon May 27 01:53:07 2024 -0300
+
+    First commit

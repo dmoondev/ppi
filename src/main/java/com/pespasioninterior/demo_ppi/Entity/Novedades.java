@@ -15,20 +15,20 @@ public class Novedades {
     private int id;
     
     @NotNull
-    private String titulo;
+    private String title;
     
     @NotNull
     @Lob
-    private String cuerpo;
+    private String body;
     
     @NotNull
     private String img;
     
     public Novedades(){}
     
-    public Novedades(String titulo, String cuerpo, String img){
-        this.titulo = titulo;
-        this.cuerpo = cuerpo;
+    public Novedades(String title, String body, String img){
+        this.title = title;
+        this.body = body;
         this.img = img;
     }
 
@@ -36,20 +36,20 @@ public class Novedades {
         return id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getCuerpo() {
-        return cuerpo;
+    public String getBody() {
+        return body;
     }
 
-    public void setCuerpo(String cuerpo) {
-        this.cuerpo = cuerpo;
+    public void setBody(String cuerpo) {
+        this.body = cuerpo;
     }
     
     public String getImg() {

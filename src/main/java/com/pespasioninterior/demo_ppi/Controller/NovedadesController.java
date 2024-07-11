@@ -29,7 +29,7 @@ public class NovedadesController {
 	@Autowired
 	NovedadesService sNovedades;
 	
-	@GetMapping("/lista")
+	@GetMapping("/list")
 	public ResponseEntity<List<Novedades>> listNovedades(){
 		List<Novedades> list = sNovedades.listNovedades();
 		return new ResponseEntity(list, HttpStatus.OK);
@@ -43,17 +43,18 @@ public class NovedadesController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<?> createNovedad(@RequestBody NovedadesDto dtoNovedades){
-		if(StringUtils.isBlank(dtoNovedades.getTitulo())) {
+		System.out.println("Title: " + dtoNovedades.getTitle() + "   Img: " + dtoNovedades.getImg() + "Body: " + dtoNovedades.getBody());
+		if(StringUtils.isBlank(dtoNovedades.getTitle())) {
 			return new ResponseEntity(new Mensaje("Se requiere título para crear la Novedad"), HttpStatus.BAD_REQUEST);
 		}
-		if(StringUtils.isBlank(dtoNovedades.getCuerpo())) {
+		if(StringUtils.isBlank(dtoNovedades.getBody())) {
 			return new ResponseEntity(new Mensaje("Se requiere el cuerpo para crear la Novedad"), HttpStatus.BAD_REQUEST);
 		}
 		if(StringUtils.isBlank(dtoNovedades.getImg())) {
 			return new ResponseEntity(new Mensaje("Se requiere la ruta de la imagen"), HttpStatus.BAD_REQUEST);
 		}
 		
-		Novedades novedad = new Novedades(dtoNovedades.getTitulo(), dtoNovedades.getCuerpo(), dtoNovedades.getImg());
+		Novedades novedad = new Novedades(dtoNovedades.getTitle(), dtoNovedades.getBody(), dtoNovedades.getImg());
 		sNovedades.saveNovedad(novedad);
 		return new ResponseEntity(new Mensaje("Novedad agregada con exito..."), HttpStatus.OK);
 	}
@@ -63,10 +64,10 @@ public class NovedadesController {
 		if(!sNovedades.existsById(id)) {
 			return new ResponseEntity(new Mensaje("La novedad no existe..."), HttpStatus.BAD_REQUEST);
 		}
-		if(StringUtils.isBlank(dtoNovedades.getTitulo())) {
+		if(StringUtils.isBlank(dtoNovedades.getTitle())) {
 			return new ResponseEntity(new Mensaje("Se requiere título para crear la Novedad"), HttpStatus.BAD_REQUEST);
 		}
-		if(StringUtils.isBlank(dtoNovedades.getCuerpo())) {
+		if(StringUtils.isBlank(dtoNovedades.getBody())) {
 			return new ResponseEntity(new Mensaje("Se requiere el cuerpo para crear la Novedad"), HttpStatus.BAD_REQUEST);
 		}
 		if(StringUtils.isBlank(dtoNovedades.getImg())) {
@@ -74,8 +75,8 @@ public class NovedadesController {
 		}
 		
 		Novedades novedad = sNovedades.getOneNovedad(id).get();
-		novedad.setTitulo(dtoNovedades.getTitulo());
-		novedad.setCuerpo(dtoNovedades.getCuerpo());
+		novedad.setTitle(dtoNovedades.getTitle());
+		novedad.setBody(dtoNovedades.getBody());
 		novedad.setImg(dtoNovedades.getImg());
 		sNovedades.saveNovedad(novedad);
 		

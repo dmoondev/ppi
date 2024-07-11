@@ -5,36 +5,36 @@ import jakarta.validation.constraints.NotBlank;
 
 public class NovedadesDto {
     @NotBlank
-    private String titulo;
+    private String title;
     @NotBlank
     @Lob
-    private String cuerpo;
+    private String body;
     @NotBlank
     private String img;
 
     public NovedadesDto() {
     }
 
-    public NovedadesDto(String titulo, String cuerpo, String img) {
-        this.titulo = titulo;
-        this.cuerpo = cuerpo;
+    public NovedadesDto(String title, String body, String img) {
+        this.title = title;
+        this.body = body;
         this.img = img;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getCuerpo() {
-        return cuerpo;
+    public String getBody() {
+        return title;
     }
 
-    public void setCuerpo(String cuerpo) {
-        this.cuerpo = cuerpo;
+    public void setBody(String body) {
+        this.body = body;
     }
     
     public String getImg() {
