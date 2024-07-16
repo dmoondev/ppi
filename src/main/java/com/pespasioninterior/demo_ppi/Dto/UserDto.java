@@ -1,18 +1,25 @@
-package com.pespasioninterior.demo_ppi.Security.Request;
+package com.pespasioninterior.demo_ppi.Dto;
 
-public class RegisterRequest {
-    
-    private String username;
+import jakarta.validation.constraints.NotBlank;
+
+public class UserDto {
+	@NotBlank
+	private String username;
+	@NotBlank
     private String password;
+	@NotBlank
     private String firstname;
+	@NotBlank
     private String lastname;
+	@NotBlank
     private String country;
+	@NotBlank
     private String img;
 
     // Constructor
-    public RegisterRequest() {}
+    public UserDto() {}
 
-    public RegisterRequest(String username, String password, String firstname, String lastname, String country,
+    public UserDto(String username, String password, String firstname, String lastname, String country,
     						String img) {
         this.username = username;
         this.password = password;

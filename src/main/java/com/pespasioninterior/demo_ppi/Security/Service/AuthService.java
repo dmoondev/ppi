@@ -36,7 +36,7 @@ public class AuthService {
             String token = jwtService.getToken(user);
             return new AuthResponse(token);
         } catch (Exception e) {
-            e.printStackTrace(); // Agrega logs para ayudar en la depuración
+            e.printStackTrace();
             throw new RuntimeException("Error en la autenticación");
         }
     }
@@ -49,9 +49,14 @@ public class AuthService {
         user.setLastname(request.getLastname());
         user.setCountry(request.getCountry());
         user.setRole(Role.ADMIN);
+        user.setImg(request.getImg());
         
         userRepository.save(user);
         
         return new AuthResponse(jwtService.getToken(user));
+    }
+    
+    public boolean equalsPassword(String enteredPassword, String currentPassword) {
+    	return passwordEncoder.matches(enteredPassword, currentPassword);
     }
 }

@@ -13,6 +13,8 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.pespasioninterior.demo_ppi.Security.Entity.User;
+
 @Service
 public class JwtService {
     
@@ -21,6 +23,7 @@ public class JwtService {
     public String getToken(UserDetails user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("roles", user.getAuthorities()); // Agregar roles al token
+        claims.put("userId", ((User) user).getId());
         return getToken(claims, user);
     }
     

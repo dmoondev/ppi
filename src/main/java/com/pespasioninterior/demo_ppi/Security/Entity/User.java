@@ -23,6 +23,7 @@ public class User implements UserDetails {
     private String lastname;
     private String firstname;
     private String country;
+    private String img;
     
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -74,6 +75,14 @@ public class User implements UserDetails {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public Role getRole() {
