@@ -54,7 +54,7 @@ public class UserController {
 		
 		userService.saveUser(user);
 		
-		return new ResponseEntity(new Mensaje("Usuario actualizado con exito..."), HttpStatus.OK);
+		return new ResponseEntity(user, HttpStatus.OK);
 	}
 
 }
