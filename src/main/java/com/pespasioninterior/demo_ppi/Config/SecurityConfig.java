@@ -30,6 +30,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authRequest -> authRequest
                         .requestMatchers("/auth/**").permitAll()
                         
+                        .requestMatchers("/contact/sendemail").permitAll()
+                        
                         .requestMatchers("/novedades/list", "/novedades/detail/**").permitAll()
                         .requestMatchers("/novedades/create", "/novedades/update/**", "/novedades/delete/**").hasRole("ADMIN")
                         

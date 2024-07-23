@@ -4,11 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,20 +26,20 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<UserDto> getUser(@PathVariable ("id") int id){
+	public ResponseEntity<User> getUser(@PathVariable ("id") int id){
 		User user = userService.getUser(id).get();
-		return new ResponseEntity(user, HttpStatus.OK);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")
 	public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody UserDto userDto){
 		if(!userService.existsById(id)) {
-			return new ResponseEntity(new Mensaje("El usuario no existe..."), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new Mensaje("El usuario no existe..."), HttpStatus.BAD_REQUEST);
 		}
 		if(!StringUtils.isBlank(userDto.getUsername()) && StringUtils.isBlank(userDto.getPassword()) && 
 				StringUtils.isBlank(userDto.getFirstname()) && StringUtils.isBlank(userDto.getLastname()) &&
 				StringUtils.isBlank(userDto.getCountry()) && StringUtils.isBlank(userDto.getImg())) {
-			return new ResponseEntity(new Mensaje("Complete todos los campos para actualizar..."), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new Mensaje("Complete todos los campos para actualizar..."), HttpStatus.BAD_REQUEST);
 		}
 		
 		User user = userService.getUser(id).get();
@@ -54,7 +52,7 @@ public class UserController {
 		
 		userService.saveUser(user);
 		
-		return new ResponseEntity(user, HttpStatus.OK);
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
 }
