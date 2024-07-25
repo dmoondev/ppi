@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pespasioninterior.demo_ppi.Dto.ContactDto;
+import com.pespasioninterior.demo_ppi.Security.Controller.Mensaje;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -29,13 +30,13 @@ public class ContactController {
             SimpleMailMessage message = new SimpleMailMessage();
             //message.setFrom(contact.getEmailFrom());
             //message.setTo(contact.getEmailTo());
-            message.setTo("lunazentenosantiago2020@gmail.com");
+            message.setTo("ppi.code.sl@gmail.com");
             message.setSubject(contact.getEmailSubject());
             message.setText("Correo enviado desde: " + contact.getEmailFrom() + "\nTelefono de contacto: " + contact.getNumberPhone() + ": \n\nMensaje:\n\n" + contact.getEmailText());
             mailSender.send(message);
-            return new ResponseEntity<>("Correo electrónico enviado correctamente.", HttpStatus.OK);
+            return new ResponseEntity<>(new Mensaje("Correo electrónico enviado correctamente."), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al enviar el correo electrónico: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("Error al enviar el correo electrónico: " + e.getMessage()), HttpStatus.BAD_REQUEST);
         }
     }
 }

@@ -43,7 +43,6 @@ public class NovedadesController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<?> createNovedad(@RequestBody NovedadesDto dtoNovedades){
-		System.out.println("Title: " + dtoNovedades.getTitle() + "   Img: " + dtoNovedades.getImg() + "Body: " + dtoNovedades.getBody());
 		if(StringUtils.isBlank(dtoNovedades.getTitle())) {
 			return new ResponseEntity<>(new Mensaje("Se requiere título para crear la Novedad"), HttpStatus.BAD_REQUEST);
 		}
