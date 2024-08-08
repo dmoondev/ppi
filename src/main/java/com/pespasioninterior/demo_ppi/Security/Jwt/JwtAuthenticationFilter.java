@@ -24,7 +24,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
-    private final List<String> excludedUrls = List.of("/auth/register", "/auth/login", "/novedades/list", "/novedades/detail/**");
+    private final List<String> excludedUrls = List.of("/auth/**", "/novedades/list", "/novedades/detail/**");
     private final AntPathMatcher pathMatcher = new AntPathMatcher();
 
     // Constructor manual

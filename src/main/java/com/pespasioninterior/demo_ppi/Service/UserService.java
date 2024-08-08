@@ -20,11 +20,19 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 	
+	public Optional<User> getUserEmail(String email){
+		return userRepository.findByEmail(email);
+	}
+	
 	public void saveUser(User user) {
 		userRepository.save(user);
 	}
 	
 	public boolean existsById(int id) {
 		return userRepository.existsById(id);
+	}
+	
+	public boolean existsByEmail(String email) {
+		return this.userRepository.existsByEmail(email);
 	}
 }

@@ -2,6 +2,8 @@ package com.pespasioninterior.demo_ppi.Security.Entity;
 
 import com.pespasioninterior.demo_ppi.Security.Enum.Role;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,11 +21,17 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String username;
     
+    @Column(nullable = false)
+    private String email;
+    
     private String password;
     private String lastname;
     private String firstname;
     private String country;
     private String img;
+    
+    private String resetToken;
+    private LocalDateTime tokenExpiryDate;
     
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -40,10 +48,18 @@ public class User implements UserDetails {
     public String getUsername() {
         return username;
     }
-
+    
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email.toLowerCase();
+	}
 
     public String getPassword() {
         return password;
@@ -91,6 +107,22 @@ public class User implements UserDetails {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+    
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public LocalDateTime getTokenExpiryDate() {
+        return tokenExpiryDate;
+    }
+
+    public void setTokenExpiryDate(LocalDateTime tokenExpiryDate) {
+        this.tokenExpiryDate = tokenExpiryDate;
     }
 
     @Override

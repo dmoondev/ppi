@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 
 public class UserDto {
 	@NotBlank
+	private String email;
+	@NotBlank
 	private String username;
 	@NotBlank
     private String password;
@@ -19,9 +21,11 @@ public class UserDto {
     // Constructor
     public UserDto() {}
 
-    public UserDto(String username, String password, String firstname, String lastname, String country,
-    						String img) {
-        this.username = username;
+    public UserDto(String email, String username, String password, String firstname, 
+    				String lastname, String country, String img) {
+    	
+        this.email = email.toLowerCase();
+    	this.username = username;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -29,11 +33,20 @@ public class UserDto {
     }
 
     // Getters y Setters
-    public String getUsername() {
+    
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email.toLowerCase();
+	}
+	
+	public String getUsername() {
         return username;
     }
-
-    public void setUsername(String username) {
+	
+	public void setUsername(String username) {
         this.username = username;
     }
 

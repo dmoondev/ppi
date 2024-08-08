@@ -36,13 +36,14 @@ public class UserController {
 		if(!userService.existsById(id)) {
 			return new ResponseEntity<>(new Mensaje("El usuario no existe..."), HttpStatus.BAD_REQUEST);
 		}
-		if(!StringUtils.isBlank(userDto.getUsername()) && StringUtils.isBlank(userDto.getPassword()) && 
+		if(!StringUtils.isBlank(userDto.getEmail()) && !StringUtils.isBlank(userDto.getUsername()) && StringUtils.isBlank(userDto.getPassword()) && 
 				StringUtils.isBlank(userDto.getFirstname()) && StringUtils.isBlank(userDto.getLastname()) &&
 				StringUtils.isBlank(userDto.getCountry()) && StringUtils.isBlank(userDto.getImg())) {
 			return new ResponseEntity<>(new Mensaje("Complete todos los campos para actualizar..."), HttpStatus.BAD_REQUEST);
 		}
 		
 		User user = userService.getUser(id).get();
+		user.setEmail(userDto.getEmail());
 		user.setUsername(userDto.getUsername());
 		user.setPassword(userDto.getPassword());
 		user.setFirstname(userDto.getFirstname());
